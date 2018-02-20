@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11860,9 +11860,18 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Implementation:-Selecting-Samples">Implementation: Selecting Samples<a class="anchor-link" href="#Implementation:-Selecting-Samples">&#182;</a></h3><p>To get a better understanding of the customers and how their data will transform through the analysis, it would be best to select a few sample data points and explore them in more detail. In the code block below, add <strong>three</strong> indices of your choice to the <code>indices</code> list which will represent the customers to track. It is suggested to try different sets of samples until you obtain customers that vary significantly from one another.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -11870,9 +11879,14 @@ div#notebook {
 
 <span class="c1">#import seaborn as sns</span>
 
+
 <span class="c1">#percentiles_data = 100*data.rank(pct=True)</span>
-<span class="c1">#percentiles_samples = percentiles_data.iloc[219]</span>
+<span class="c1">#percentiles_samples[indice1] = percentiles_data.iloc[indices]</span>
+    
 <span class="c1">#sns.heatmap(percentiles_samples, annot=True)</span>
+
+<span class="c1">#print(&#39;test1&#39;,percentiles_samples)</span>
+
 <span class="n">medd1_Fresh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Fresh&#39;</span><span class="p">])</span>
 <span class="n">medd1_Milk</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Milk&#39;</span><span class="p">])</span>
 <span class="n">medd1_Grocery</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grocery&#39;</span><span class="p">])</span>
@@ -12043,6 +12057,29 @@ div#notebook {
 </div>
 </div>
 
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(&#39;test1&#39;, {10: Fresh               26.931818
+Milk                64.545455
+Grocery             82.045455
+Frozen              79.545455
+Detergents_Paper    84.318182
+Delicatessen        73.181818
+Name: 10, dtype: float64, 100: Fresh               62.500000
+Milk                78.636364
+Grocery             80.227273
+Frozen              72.954545
+Detergents_Paper    91.363636
+Delicatessen        90.454545
+Name: 100, dtype: float64})
+</pre>
+</div>
 </div>
 
 <div class="output_area">
@@ -13831,15 +13868,6 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Implementation:-Selecting-Samples">Implementation: Selecting Samples<a class="anchor-link" href="#Implementation:-Selecting-Samples">&#182;</a></h3><p>To get a better understanding of the customers and how their data will transform through the analysis, it would be best to select a few sample data points and explore them in more detail. In the code block below, add <strong>three</strong> indices of your choice to the <code>indices</code> list which will represent the customers to track. It is suggested to try different sets of samples until you obtain customers that vary significantly from one another.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[71]:</div>
@@ -14027,8 +14055,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A:  The establishments that would buy these product types would be convenience stores that sell more fresh vegables / fruits foods &amp; milk then geoceries or cleaning items like paper / detergents.  But these stores also sell delicatessen items like sandwiches albeit the lowest of the 5 categories.<br>
-Also, some customers could be restarauts or hotels.</p>
+<p>Clarification Requested:  In your lexicon: is a "sample" defined as one of the 440 customer data points? or is a "sample" a  random subset of x (&gt;1) these 440 customer data points?</p>
+<p>A:  The establishments that would buy more milk &amp; detergents paper then groceries would be a fast food corner store.  The 'fresh' would require more in-store labor so more overhead these stores would not have!  Also, small stores would need a shopper volume to 'move' the fresh food because these foods spoil quickly, so again small stores would likely not carry these items.</p>
+<p>But a larger store - super market - would sell more 'fresh', 'frozen', and 'delicatessen' items because they had the shopper traffic to 'turn the inventory over' these items before they would spoil and would have the volume to support the addition labor overhead.</p>
+<p>If some customers were restaurants or hotels, they would order greater fresh and frozen volumes to satisfy the restaurant's customers.  These same restaurants-hotels would NOT sell detergents-paper at all, so the detergents-paper ordered would consumed by restaurant internally.  This means that the restaurant would not order large volumes of detergent-paper.</p>
+<p>Using this logic:
+Samples 0, 3, 5, 8: aresstores
+Samples 1, 2, 4, 6 : are restaurants
+Sample 7: likely a large restaurant</p>
 
 </div>
 </div>
